@@ -1,0 +1,51 @@
+#!/bin/bash
+#
+### BEGIN INIT INFO
+# Provides:          configProxy
+# Default-Start:     3 5
+# Default-Stop:      0 1 6
+# Short-Description: Starts front proxy for paas
+# Description:       Starts front proxy for paas
+### END INIT INFO
+
+
+. /etc/rc.d/init.d/functions
+
+pidfile=${PIDFILE-$osdir/httpd/run/httpd.pid}
+lockfile=${LOCKFILE-/var/lock/subsys/openshift-broker}
+prog=/usr/local/paas/bin/configProxyService.rb
+RETVAL=0
+
+start() {
+	echo -n $"Starting $prog: "
+	$prog start
+}
+
+stop() {
+	echo -n $"Stopping $prog: "
+	$prog stop
+}
+
+restart() {
+	echo -n $"Starting $prog: "
+	$prog restart
+}
+
+# See how we were called.
+case "$1" in
+  start)
+	start
+	;;
+  stop)
+	stop
+	;;
+  status)
+		$prog status
+	;;
+  restart)
+	restart
+	;;
+  *)
+	echo $"Usage: $prog {start|stop|restart|status}"
+esac
+
