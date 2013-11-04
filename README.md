@@ -36,6 +36,13 @@ Every time you modify the lifecycle of an application, the `paas-appli-updater` 
 
 They route network flows to Web gears according to the Openshift Origin vocabulary, so the **Paas Rproxy HA** bypass Haproxy gears in the cases of scalables applications.
 
+## Build RPM ##
+
+    $ yum install tito
+    $ git clone https://github.com/worldline/paas-appli-updater.git
+    $ cd paas-appli-updater 
+    $ tito build --rpm
+
 ###TO DO###
 _2013 October-10_
 

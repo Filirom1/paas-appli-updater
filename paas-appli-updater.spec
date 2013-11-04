@@ -1,69 +1,64 @@
-%define _topdir /usr/src/rpmbuild
-%define prefix /usr/local
-%define prefix2 /
-%define sources /usr/local/paas-appli-updater/paas
-%define sources2 /usr/local/paas-appli-updater/etc
+%global paasdir %{_libdir}/paas-appli-updater
 
 Name:           paas-appli-updater
 Version:        0.2
-Release:        1
-%define buildroot %{_topdir}/%{name}-%{version}
+Release:        1%{?dist}
 Summary:        Applications update Process on reverses proxies
+Source0:        https://github.com/worldline/%{name}/archive/master.tar.gz
 
 Group:          Applications/Paas
 BuildArch:      noarch
 License:        Apache
 URL:            http://worldline.com
-BuildRoot:      %{buildroot}
-Source0:        /usr/local/paas-appli-updater/paas
-Prefix:         %{prefix}
+
+
+# TODO clean it
 
 #BuildRequires:  
-require 'rubygems'
-require 'stomp'
-require 'mcollective'
-require 'pp'
-require 'logger'
-require 'broker'
-require 'node'
-require 'rproxy'
-require 'config'
-require 'paasexceptions'
+#require 'rubygems'
+#require 'stomp'
+#require 'mcollective'
+#require 'pp'
+#require 'logger'
+#require 'broker'
+#require 'node'
+#require 'rproxy'
+#require 'config'
+#require 'paasexceptions'
+#
+#Requires:       paas-libs >= 0.2.0
+#Requires:       ruby193-rubygems >= 1.8.24
+#Requires:       ruby193-rubygem-stomp >= 1.1.8
+#Requires:       ruby193-mcollective-common >= 2.2.3
 
-Requires:       paas-libs >= 0.2.0
-Requires:       ruby193-rubygems >= 1.8.24
-Requires:       ruby193-rubygem-stomp >= 1.1.8
-Requires:       ruby193-mcollective-common >= 2.2.3
 
 %description
 Paas: Applications update Process on reverses proxies
 
 %prep
-rm -rf %{name}
-mkdir %{name}
-%__cp -Rp %{sources} %{sources2} %{name}
+%setup -q
+
+%build
+%__rm %{name}.spec
 
 %install
-mkdir -p ${RPM_BUILD_ROOT}/%{prefix}
-mkdir -p ${RPM_BUILD_ROOT}/%{prefix2}
-%__cp -Rp %{name}/paas ${RPM_BUILD_ROOT}/%{prefix}
-%__cp -Rp %{name}/etc ${RPM_BUILD_ROOT}/%{prefix2}
+%__mkdir -p %{buildroot}%{paasdir}
+%__cp -r * %{buildroot}%{paasdir}
 
+#TODO systemd
+%__mkdir -p %{buildroot}%{_initddir}
+%__mv %{buildroot}%{paasdir}/init.d/* %{buildroot}%{_initddir}
+%__rm -rf %{buildroot}%{paasdir}/init.d
 
-%clean
-# rm -rf $RPM_BUILD_ROOT
 
 %files
-%defattr(-,root,root,-)
-/usr/local/paas/bin/configProxy.rb
-/usr/local/paas/bin/configProxyService.rb
-/etc/init.d/paas-configProxy 
+%doc %{paasdir}/LICENSE
+%doc %{paasdir}/README.md
+%doc %{paasdir}/paas-ha.jpg
+%{paasdir}
 
-%config
-
-%post
-
-%postun
+#TODO systemd
+%{_initddir}/%{name}
 
 %changelog
 * Mon Oct 11 2013 - 0.2 - a186643
