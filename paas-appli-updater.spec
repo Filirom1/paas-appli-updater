@@ -1,7 +1,7 @@
 %global paasdir %{_libdir}/paas-appli-updater
 
 Name:           paas-appli-updater
-Version:        0.2
+Version:        0.3
 Release:        1%{?dist}
 Summary:        Applications update Process on reverses proxies
 Source0:        https://github.com/worldline/%{name}/archive/master.tar.gz
@@ -61,6 +61,9 @@ Paas: Applications update Process on reverses proxies
 %{_initddir}/%{name}
 
 %changelog
+* Mon Nov 04 2013 Filirom1 <Filirom1@gmail.com> 0.3-1
+- new package built with tito
+
 * Mon Oct 11 2013 - 0.2 - a186643
 - Update version to push sources to github
 * Mon Jun 30 2013 - 0.1.1 - a186643
