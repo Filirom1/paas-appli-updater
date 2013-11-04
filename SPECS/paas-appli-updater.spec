@@ -11,12 +11,12 @@ Release:        1
 Summary:        Applications update Process on reverses proxies
 
 Group:          Applications/Paas
-BuildArch:			noarch
+BuildArch:      noarch
 License:        Apache
 URL:            http://worldline.com
 BuildRoot:      %{buildroot}
-Source0:		/usr/local/paas-appli-updater/paas
-Prefix:		%{prefix}
+Source0:        /usr/local/paas-appli-updater/paas
+Prefix:         %{prefix}
 
 #BuildRequires:  
 require 'rubygems'
@@ -31,9 +31,9 @@ require 'config'
 require 'paasexceptions'
 
 Requires:       paas-libs >= 0.2.0
-Requires:				ruby193-rubygems >= 1.8.24
-Requires:				ruby193-rubygem-stomp >= 1.1.8
-Requires:				ruby193-mcollective-common >= 2.2.3
+Requires:       ruby193-rubygems >= 1.8.24
+Requires:       ruby193-rubygem-stomp >= 1.1.8
+Requires:       ruby193-mcollective-common >= 2.2.3
 
 %description
 Paas: Applications update Process on reverses proxies
