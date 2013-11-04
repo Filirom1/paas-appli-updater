@@ -2,4 +2,4 @@
 require 'rubygems'
 require 'daemons'
 
-Daemons.run('/usr/local/paas/bin/configProxy.rb')
+Daemons.run(File.expand_path("../configProxy.rb", __FILE__))
