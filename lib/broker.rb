@@ -1,16 +1,13 @@
 #!/usr/bin/env ruby
 
-$LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
-require 'rubygems'
-require 'uri'
-require 'logger'
 require 'rest-client'
-require 'json'
-require 'base64'
-require 'config'
-require 'paasexceptions'
 require 'resolv'
+require 'json'
+#require 'base64'
 require 'mongo'
+
+require_relative "./config"
+require_relative "./paasexceptions"
 include Mongo
 
 $baseUrl='http://%s/broker/rest'

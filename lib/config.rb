@@ -1,7 +1,5 @@
 $configFile = "/etc/paas/configProxy.conf"
 
-$LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
-
 require 'singleton'
 require 'optparse'
 

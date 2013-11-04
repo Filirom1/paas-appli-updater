@@ -1,17 +1,13 @@
 #!/usr/bin/env ruby
- 
-$LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
 
-require 'rubygems'
 require 'stomp'
-require 'mcollective'
-require 'pp'
 require 'logger'
-require 'broker'
-require 'node'
-require 'rproxy'
-require 'config'
-require 'paasexceptions'
+
+require_relative "../lib/config"
+require_relative "../lib/broker"
+require_relative "../lib/node"
+require_relative "../lib/rproxy"
+require_relative "../lib/paasexceptions"
 
 # A modifier en cas de modif Redhat Openshift
 $cartNameTrap='openshift-origin-node'

@@ -1,11 +1,10 @@
 #!/usr/bin/env ruby
-
-$LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
-require 'uri'
-require 'logger'
 require 'mcollective'
 require 'resolv'
-require 'paasexceptions'
+
+require_relative "./paasexceptions"
+
+
 include MCollective::RPC
 
 module Awlpaas

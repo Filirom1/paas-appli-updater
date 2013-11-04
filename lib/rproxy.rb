@@ -1,12 +1,12 @@
 #!/usr/bin/ruby
 
-$LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
-require 'uri'
-require 'logger'
 require 'mcollective'
-require 'paasexceptions'
-require 'config'
+
+require_relative "./paasexceptions"
+require_relative "./config"
+
 include MCollective::RPC
+
 $confFile = '/etc/mcollective/clientDmz.cfg'
 
 module Awlpaas
