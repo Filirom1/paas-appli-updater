@@ -9,25 +9,25 @@ module Awlpaas
   class Config
     include Singleton
 
-		attr_reader :usernameBroker, :passwordBroker, :domainName, :usernameMcollective,
-						:passwordMcollective, :serveurMcollective, :portMcollective, :configured,
-						:topicRepli, :topicResponse, :confMCOProxy, :logFile, :brokerIp, :portMongo
+    attr_reader :usernameBroker, :passwordBroker, :domainName, :usernameMcollective,
+            :passwordMcollective, :serveurMcollective, :portMcollective, :configured,
+            :topicRepli, :topicResponse, :confMCOProxy, :logFile, :brokerIp, :portMongo
 
     def initialize
       @configured = false
     end
 
-		def getConffilename
+    def getConffilename
       parser = OptionParser.new
       parser.on("--config CONFIG", "-c", "Config file") do |f|
         configfile = f
       end
       configfile = $configFile unless configfile
-			configfile
-		end
+      configfile
+    end
 
     def loadconfig
-			configfile = getConffilename
+      configfile = getConffilename
       set_config_defaults(configfile)
 
       if File.exists?(configfile)
@@ -54,18 +54,18 @@ module Awlpaas
                   @serveurMcollective = val
                 when "portMcollective"
                   @portMcollective = val
-								when "topicResponse"
-									@topicResponse = val
-								when "topicRepli"
-									@topicRepli = val
-								when "confMCOProxy"
-									@confMCOProxy = val
-								when "logFile"
-									@logFile = val
-								when "brokerIp"
-									@brokerIp = val
-								when "portMongo"
-									@portMongo = val
+                when "topicResponse"
+                  @topicResponse = val
+                when "topicRepli"
+                  @topicRepli = val
+                when "confMCOProxy"
+                  @confMCOProxy = val
+                when "logFile"
+                  @logFile = val
+                when "brokerIp"
+                  @brokerIp = val
+                when "portMongo"
+                  @portMongo = val
                 else
                   raise("Unknown config parameter #{key}")
               end
@@ -79,19 +79,19 @@ module Awlpaas
     end
 
     def set_config_defaults(configfile)
-			@usernameBroker = String.new
-			@passwordBroker = String.new
-			@domainName = String.new
-			@usernameMcollective = "mcollective"
-			@passwordMcollective = "marionette"
-			@serveurMcollective = "localhost"
-			@portMcollective = 61613
-			@topicResponse = /topic/mcollectiveReplyRepli
-			@topicRepli = /topic/mcollectiveOOAgentRepli
-			@confMCOProxy = '/etc/mcollective/clientDmz.cfg'
-			@logFile = '/var/log/paas/configProxy.log'
-			@brokerIp = "127.0.0.1"
-			@portMongo = "27017"
+      @usernameBroker = String.new
+      @passwordBroker = String.new
+      @domainName = String.new
+      @usernameMcollective = "mcollective"
+      @passwordMcollective = "marionette"
+      @serveurMcollective = "localhost"
+      @portMcollective = 61613
+      @topicResponse = /topic/mcollectiveReplyRepli
+      @topicRepli = /topic/mcollectiveOOAgentRepli
+      @confMCOProxy = '/etc/mcollective/clientDmz.cfg'
+      @logFile = '/var/log/paas/configProxy.log'
+      @brokerIp = "127.0.0.1"
+      @portMongo = "27017"
     end
 
   end
