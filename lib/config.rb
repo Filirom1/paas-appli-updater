@@ -86,8 +86,8 @@ module Awlpaas
       @passwordMcollective = "marionette"
       @serveurMcollective = "localhost"
       @portMcollective = 61613
-      @topicResponse = /topic/mcollectiveReplyRepli
-      @topicRepli = /topic/mcollectiveOOAgentRepli
+      @topicResponse = '/topic/mcollectiveReplyRepli'
+      @topicRepli = '/topic/mcollectiveOOAgentRepli'
       @confMCOProxy = '/etc/mcollective/clientDmz.cfg'
       @logFile = '/var/log/paas/configProxy.log'
       @brokerIp = "127.0.0.1"
