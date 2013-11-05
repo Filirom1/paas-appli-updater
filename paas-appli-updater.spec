@@ -1,7 +1,7 @@
 %global paasdir %{_libdir}/paas-appli-updater
 
 Name:           paas-appli-updater
-Version:        0.3
+Version:        0.4
 Release:        1%{?dist}
 Summary:        Applications update Process on reverses proxies
 Source0:        https://github.com/worldline/%{name}/archive/master.tar.gz
@@ -66,6 +66,14 @@ Paas: Applications update Process on reverses proxies
 %{_initddir}/%{name}
 
 %changelog
+* Tue Nov 05 2013 Filirom1 <Filirom1@gmail.com> 0.4-1
+- add default configuration (Filirom1@gmail.com)
+- clean dependencies (Filirom1@gmail.com)
+- use relative path (Filirom1@gmail.com)
+- add missing quotes (Filirom1@gmail.com)
+- OpenShift code style is to use 2 spaces instead of tab (Filirom1@gmail.com)
+- merge paas-lib (Filirom1@gmail.com)
+
 * Mon Nov 04 2013 Filirom1 <Filirom1@gmail.com> 0.3-1
 - new package built with tito
 
