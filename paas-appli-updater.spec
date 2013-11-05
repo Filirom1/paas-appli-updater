@@ -45,6 +45,9 @@ Paas: Applications update Process on reverses proxies
 %__mkdir -p %{buildroot}%{paasdir}
 %__cp -r * %{buildroot}%{paasdir}
 
+%__mkdir -p %{buildroot}%{_sysconfdir}
+%__cp conf/%{name}.conf %{buildroot}%{_sysconfdir}
+
 #TODO systemd
 %__mkdir -p %{buildroot}%{_initddir}
 %__mv %{buildroot}%{paasdir}/init.d/* %{buildroot}%{_initddir}
@@ -55,6 +58,8 @@ Paas: Applications update Process on reverses proxies
 %doc %{paasdir}/LICENSE
 %doc %{paasdir}/README.md
 %doc %{paasdir}/paas-ha.jpg
+%config(noreplace) %{_sysconfdir}/%{name}.conf
+
 %{paasdir}
 
 #TODO systemd
